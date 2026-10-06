@@ -1,0 +1,65 @@
+schema: mega-review/1
+package: mu2e-tdaq-suite
+tier: C
+group: artdaq-data-path
+repo:
+  url: git@github.com:Mu2e/mu2e-tdaq-suite.git
+  exists: true
+  issues_enabled: true
+doc_dir: docs
+summary: >
+  Placeholder source repository for the mu2e-tdaq-suite Spack bundle; a
+  one-line CMakeLists.txt lets Spack MPD development areas include it, and
+  nothing in mu2edaq-main uses it
+languages: [cmake]
+loc: 1
+
+runtime:
+  executables: []
+  services: []
+  ports: []
+  config_files: []
+  env_vars: []
+
+interactions:
+  depends_on: []
+  depended_on_by: []
+  external: [spack, spack-mpd, mu2e-spack]
+
+quality:
+  tests: {present: false, framework: none, count: 0}
+  ci: {present: false, workflows: []}
+  license: BSD-3-Clause (Fermilab)
+  artifacts_clean: true
+
+findings:
+  - id: TDS-001
+    severity: S4
+    type: documentation
+    title: "[submodules] mu2e-tdaq-suite is a Spack MPD placeholder: declare why mu2edaq-main carries it or remove it from .gitmodules"
+    issue: pending
+    fingerprint: 1b162eb5
+
+notes:
+  routing: >
+    Staged with "file this against Mu2e/mu2edaq-main": the repository's own
+    purpose is documented (CMakeLists.txt:1), and the open decision is the
+    superproject's .gitmodules entry. The fingerprint uses Mu2e/mu2edaq-main.
+  spack_mpd: >
+    The Spack package mu2e-tdaq-suite is a BundlePackage in Mu2e/mu2e-spack
+    (packages/mu2e-tdaq-suite/package.py, default branch artdaq/Spack0.28)
+    with versions v4_00_00..v15_00_00 and develop, pinning art-suite,
+    artdaq, otsdaq-suite and the Mu2e TDAQ packages per version. It is
+    installed by spack add mu2e-tdaq-suite@tag
+    (otsdaq-mu2e/tools/mu2e-quick-spack-start_v1.1.sh:287). In --develop
+    --all-packages mode that script clones this repository into srcs/ (:319)
+    for Spack MPD, which needs a CMakeLists.txt in every srcs/ entry. Same
+    pattern as art-daq/artdaq-suite and art-daq/otsdaq-suite.
+  license: >
+    LICENSE is the Fermilab BSD text; GitHub's licence detection reports
+    "Other".
+  pin: >
+    mu2edaq-main HEAD and t01.00.00 pin 997faeb (2026-02-16); upstream
+    develop is at 7deabce (2026-09-30, README link update), 2 commits ahead.
+  loc: >
+    1 line of CMake (a comment). README.md 24 lines of links.
